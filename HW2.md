@@ -49,9 +49,70 @@ Date:   Tue Nov 1 10:29:18 2022 +0300
     2. Используемые коммиты:
 
    1. d014a17ca049ad5389484b1cf29e695ab7d36dcf
-   2. daaa3d32ff98ffad7321c14815438b28a75835295
-   3. 1c9f8b890cdd43c31c44647f34f1497de3c5edbd
+   2. 51d2ea70fdfe3d2360508377b8494c0017cdcca6
+   3. 8897d25c3fd2a037185a5e518b32e931b2a3161b
 
    Создадим новую ветку для процедур `git checkout -b HW` <br>
    `git revert d014a17ca049ad5389484b1cf29e695ab7d36dcf` <br>
 
+```
+       Автослияние index.html
+[HW ec56715] Revert "text styles changed" for homework
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+   ```
+
+   `git add .` <br>
+
+   `git revert 51d2ea70fdfe3d2360508377b8494c0017cdcca6` <br>
+   ```
+   [HW 33ba4bd] Revert "gitinnor added" for hw
+ 3 files changed, 343 insertions(+), 1 deletion(-)
+ delete mode 100644 .gitignore
+ create mode 100644 logs/access.log
+ create mode 100644 logs/error.log
+```
+   `git revert 8897d25c3fd2a037185a5e518b32e931b2a3161b` <br>
+
+   ```
+      подсказка: Ожидание, пока вы закроете редактор с файлом... error: There was a problem with the editor 'vi'.
+Пожалуйста, укажите сообщение, при указании опций -m или -F.
+   ```
+
+
+3. Отмена коммитов:
+
+   1. `git reset --soft 9526c49aab999a14cc9221fb4000abe5f2db97e3` <br>
+      `git status` <br>
+
+      ```
+     Текущая ветка: HW
+Изменения, которые будут включены в коммит:
+  (используйте «git restore --staged <файл>...», чтобы убрать из индекса)
+        изменено:      HW2.md
+
+Изменения, которые не в индексе для коммита:
+  (используйте «git add <файл>...», чтобы добавить файл в индекс)
+  (используйте «git restore <файл>...», чтобы отменить изменения в рабочем каталоге)
+        изменено:      HW2.md
+           
+      ```
+
+      `git restore --staged staged HW2.md` <br>
+      `git restore staged HW2.md` <br>
+
+   2. `git reset --mixed 33ba4bdb122a3e93cae3b3958c6559639f278f38` <br>
+      `git status`
+
+      ```
+        Непроиндексированные изменения после сброса:
+M       HW2.md
+M       main.js
+      ```
+
+      `git restore git restore HW2.md` <br>
+
+   3. `git reset --hard 33ba4bdb122a3e93cae3b3958c6559639f278f38` <br>
+
+      ```
+      Указатель HEAD сейчас на коммите 33ba4bd Revert "gitinnor added" for hw
+      ```
